@@ -1,9 +1,5 @@
 package com.generation.blogpessoal.configuration;
 
-import org.springdoc.core.customizers.OpenApiCustomizer;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -11,6 +7,9 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.responses.ApiResponse;
 import io.swagger.v3.oas.models.responses.ApiResponses;
+import org.springdoc.core.customizers.OpenApiCustomizer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SwaggerConfig {
@@ -20,18 +19,18 @@ public class SwaggerConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("Projeto Blog Pessoal")
-                        .description("Projeto Blog Pessoal - Generation Brasil")
+                        .description("Projeto Blog Pessoal - Felipe Sousa")
                         .version("v0.0.1")
                         .license(new License()
                                 .name("Generation Brasil")
                                 .url("https://brazil.generation.org/"))
                         .contact(new Contact()
-                                .name("Generation Brasil")
-                                .url("https://github.com/conteudoGeneration")
-                                .email("conteudogeneration@generation.org")))
+                                .name("Felipe Sousa")
+                                .url("https://github.com/FelipeSdsilva/")
+                                .email("felipe.fps09@hotmail.com")))
                 .externalDocs(new ExternalDocumentation()
                         .description("Github")
-                        .url("https://github.com/conteudoGeneration/"));
+                        .url("https://github.com/FelipeSdsilva/"));
     }
 
 

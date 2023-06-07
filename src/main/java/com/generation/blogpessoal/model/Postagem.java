@@ -1,66 +1,39 @@
 package com.generation.blogpessoal.model;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.UpdateTimestamp;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-
 @Entity
-@Table(name="tb_postagens")
+@Table(name = "tb_postagens")
 public class Postagem {
 
-	@Id // indica que este atributo será uma chave primária na minha tabela
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//indica que terá um auto-increment
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotBlank(message = "Este atributo é de preenchimento obrigatório")
-	@Size(min = 5, max=100,message="Este atributo tem que ter no mínimo 5 caracteres e no máximo 100 caracteres")
+
+	@NotBlank(message = "Este atributo é de preenchimeto obrigatório")
+	@Size(min = 5, max = 100, message = "Esse atributo tem que ter no min 5 e max 100 caracters")
 	private String titulo;
-	
-	@NotBlank(message = "Este atributo é de preenchimento obrigatório")
-	@Size(min = 10, max=1000,message="Este atributo tem que ter no mínimo 10 caracteres e no máximo 1000 caracteres")
+
+	@NotBlank(message = "Este atributo é de preenchimeto obrigatório")
+	@Size(min = 10, max = 1000, message = "Esse atributo tem que ter no min 10 e max 1000 caracters")
 	private String texto;
-	
-	@UpdateTimestamp
+
+	@UpdateTimestamp()
 	private LocalDateTime data;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Usuario usuario;
-	
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public Tema getTema() {
-		return tema;
-	}
-
-	public void setTema(Tema tema) {
-		this.tema = tema;
-	}
-
 
 	public Long getId() {
 		return id;
@@ -93,6 +66,20 @@ public class Postagem {
 	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
-	
-	
+
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }
